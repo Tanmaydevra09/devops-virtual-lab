@@ -1,0 +1,14 @@
+---
+- name: Configure EC2 Instance
+  hosts: servers
+  become: yes
+
+  tasks:
+    - name: Install Docker
+      shell: |
+        sudo yum install -y docker || sudo dnf install -y docker
+
+    - name: Start Docker Service
+      shell: |
+        sudo systemctl start docker
+        sudo systemctl enable docker
